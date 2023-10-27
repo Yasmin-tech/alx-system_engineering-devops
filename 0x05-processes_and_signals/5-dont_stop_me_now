@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# a bash script that sends a keyboard Interrupt (SIGINT) 2 to the
+# terminal
+
+pid=$(pgrep -f 4-to_infinity_and_beyond)
+kill -15 "$pid"
