@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# a bash script that sends a keyboard Interrupt (SIGINT) 2 to the
+# terminal
+
+pkill -9 -f 7-highlander
