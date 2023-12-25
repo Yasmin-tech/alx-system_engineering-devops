@@ -7,7 +7,7 @@
 
 package {
     'python3':
-    ensure  => installed,
+    ensure  => '3.8.10',
 }
 
 package {
