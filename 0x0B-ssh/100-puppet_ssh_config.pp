@@ -1,14 +1,16 @@
-# change the configration file
-file_line {
-    'IdentityFile':
-    path  => /etc/ssh/ssh_config,
-    line  => 'IdentityFile ~/.ssh/school',
-    match => '^IdentityFile',
+# Seting up my client config file
+include stdlib
+
+file_line { 'passwd auth':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => '    PasswordAuthentication no',
+  replace => true,
 }
 
-file_line {
-    'PasswordAuthentication':
-    path  => /etc/ssh/ssh_config,
-    line  => 'PasswordAuthentication no',
-    match => '^PasswordAuthentication',
+file_line { 'identity file':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => '     IdentityFile ~/.ssh/school',
+  replace => true,
 }
