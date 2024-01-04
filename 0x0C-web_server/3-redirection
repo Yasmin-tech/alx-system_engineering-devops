@@ -1,12 +1,19 @@
 #!/usr/bin/env bash
 # make redirection “301 Moved Permanently” to https://www.youtube.com/watch?v=QH2-TGUlwu4
+echo "Hello World!" > /var/www/html/index.html
+SERVER_confg=\
+"server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
 
-echo "server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        server_name _;
-
-        location / {
-                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-}" > /etc/nginx/sites-available/default
+    location / {
+        root /var/www/html;
+        index index.html;
+        if ($request_uri ~ redirect_me){
+            rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+        }
+    }
+}"
+echo -e "$SERVER_confg" > /etc/nginx/sites-available/default
 service nginx restart
