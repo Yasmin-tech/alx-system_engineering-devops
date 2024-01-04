@@ -24,19 +24,7 @@ file { '/var/www/html/index.html':
 # Create the Nginx server configuration
 file { '/etc/nginx/sites-available/default':
   ensure  => file,
-  content => "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    server_name _;
-
-    location / {
-        root /var/www/html;
-        index index.html;
-        if (\$request_uri ~ redirect_me){
-            rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-        }
-    }
-}",
+  content => template('nginx_setup/default.erb'),
 }
 
 # Ensure the Nginx service is running
