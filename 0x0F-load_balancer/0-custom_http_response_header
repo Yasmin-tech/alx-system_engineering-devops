@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Configure nginx servers to response with a custom header info, including the server name
+
+apt-get -y update
+apt-get -y install nginx
+echo "Hello World!" > /var/www/html/index.html
+hostname=$(hostname)
+server_config="server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name _;
+
+        location / {
+            root /var/www/html;
+            index index.html;
+            add_header 'X-Served-By' '$hostname';
+        }
+}"
+echo -e "$server_config" > /etc/nginx/sites-available/default
+service nginx restart
+
