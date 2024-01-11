@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# inatall HAPROXY on the server and configure it to send travffic to two servers
+# distribute requests using a roundrobin algorith
+
+apt-get -y update
+apt-get -y install haproxy
+echo -e "\nENABLED=1" > /etc/default/haproxy
+proxy_config=\
+"
+defaults
+    timeout connect 100ms
+    timeout client 100ms
+    timeout server 100ms
+
+frontend http
+    bind *:80
+    mode http
+    default_backend all_servers
+
+backend all_servers
+
+    balance roundrobin
+    mode http
+    server 420214-web-01 100.25.22.133:80 check
+    server 420214-web-02 35.174.211.176:80 check
+
+"
+
+echo -e "\n$proxy_config" > /etc/haproxy/haproxy.cfg
+service haproxy restart
+
