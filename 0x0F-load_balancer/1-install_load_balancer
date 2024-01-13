@@ -15,7 +15,7 @@ backend web_servers
     balance roundrobin
     mode http
     timeout server 30s
-    server web-01 100.25.22.133:80  check
+    server web-01 100.25.151.250:80  check
     server web-02 35.174.211.176:80 check
 EOF
         sudo service haproxy restart
