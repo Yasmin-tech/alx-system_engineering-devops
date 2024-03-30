@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# setup an Ubuntu server as an nginx webserver listening on port 80
+
+apt update
+apt -y install nginx
+service nginx start
