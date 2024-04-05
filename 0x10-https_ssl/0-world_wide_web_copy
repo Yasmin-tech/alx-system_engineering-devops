@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# a bash script that accepts two argument (domain:string, subdomain:string)
+#	and view information about the DNS records
+
+argc=$#
+
+if (( argc == 1 )); then
+	echo "The subdomain www is a A record and points to `dig www.$1 | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}'`"
+	echo "The subdomain lb-01 is a A record and points to `dig lb-01.$1 | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}'`"
+	echo "The subdomain web-01 is a A record and points to `dig web-01.$1 | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}'`"
+	echo "The subdomain web-02 is a A record and points to `dig web-02.$1 | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}'`"
+	else
+		echo "The subdomain $2 is a A record and points to `dig $2.$1 | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}'`"
+fi
+

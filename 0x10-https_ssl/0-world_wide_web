@@ -1,3 +1,24 @@
 #!/usr/bin/env bash
-# a bash script that accepts two argument (domain:string, subdomain:string)
-#	and view information about the DNS records
+# A bash script that accepts two arguments (domain:string, subdomain:string)
+# and displays information about the DNS records
+
+# Check if domain argument is provided
+if [ -z "$1" ]; then
+    echo "Error: No domain provided. Please provide a domain as the first argument."
+    exit 1
+fi
+
+# Set domain and subdomain variables
+domain=$1
+subdomains=("www" "lb-01" "web-01" "web-02")
+
+# If a second argument is provided, overwrite the subdomains array with it
+if [ -n "$2" ]; then
+    subdomains=("$2")
+fi
+
+# Loop over subdomains and display A record information
+for subdomain in "${subdomains[@]}"; do
+	echo "The subdomain $subdomain is a A record and points to $(dig "$subdomain"."$domain" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')"
+done
+
