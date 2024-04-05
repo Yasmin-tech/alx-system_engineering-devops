@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# a bash script that accepts two argument (domain:string, subdomain:string)
+#	and view information about the DNS records
