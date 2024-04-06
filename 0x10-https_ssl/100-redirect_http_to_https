@@ -1,0 +1,16 @@
+frontend web
+    bind *:80
+    # Listen for https
+
+    bind *:443 ssl crt /etc/haproxy/certs/www.yasminmahmud.tech.pem
+    redirect scheme https code 301 if !{ ssl_fc }
+    mode http
+    timeout server 30s
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    mode http
+    timeout server 30s
+    server web-01 54.160.73.119:80  check
+    server web-02 54.234.68.76:80 check
