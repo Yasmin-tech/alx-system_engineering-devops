@@ -15,4 +15,5 @@ server {
     }
 }
 EOF
+pkill apache2
 service nginx start
