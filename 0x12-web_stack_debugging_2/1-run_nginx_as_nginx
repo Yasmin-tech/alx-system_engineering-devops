@@ -16,4 +16,4 @@ server {
 }
 EOF
 pkill apache2
-service nginx start
+sudo -u nginx service nginx start
