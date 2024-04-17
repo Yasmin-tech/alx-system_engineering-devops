@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# A Bash script to configure nginx to run as user nginx and listen on all active IPs on port 8080
+
+sudo sed -i 's/#user www-data;/user nginx;/' /etc/nginx/nginx.conf
+cat << EOF > /etc/nginx/sites-available/default
+server {
+    listen 8080 default_server;
+    listen [::]:8080 default_server;
+    server_name _;
+
+    location / {
+        root /var/www/html;
+        index index.html;
+        try_files \$uri \$uri/ =404;
+    }
+}
+EOF
+service nginx start

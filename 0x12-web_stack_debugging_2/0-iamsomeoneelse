@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# A Bash script that takes one argument and run the command whoami as that user
+
+username=$1
+password=123456
+if [[ -z $username ]]; then
+	whoami
+else
+	# Create the user with the password
+	sudo useradd -m -p "$(openssl passwd -1 $password)" "$username"
+
+	# Add the user to the sudo group
+	sudo usermod -aG sudo "$username"
+
+	sudo -u "$username" whoami
+fi
+
+
+
+
+
