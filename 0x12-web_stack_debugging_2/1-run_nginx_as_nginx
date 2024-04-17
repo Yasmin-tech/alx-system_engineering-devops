@@ -17,5 +17,5 @@ server {
 EOF'
 pkill apache2
 chmod 644 /etc/nginx/nginx.conf
-sudo service nginx restart
+sudo -u nginx service nginx start
 
