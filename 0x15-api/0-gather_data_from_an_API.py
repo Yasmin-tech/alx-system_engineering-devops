@@ -12,10 +12,10 @@ EMPLOYEE_ID = sys.argv[1]
 
 
 def employee_tasks_info(EMPLOYEE_ID):
-    """
-        request an employee data and task information from
-            https://jsonplaceholder.typicode.com/
-            REST API
+    """request an employee data and task information from
+    
+    https://jsonplaceholder.typicode.com/
+    REST API
     """
 
     # response1 to get the employee name
