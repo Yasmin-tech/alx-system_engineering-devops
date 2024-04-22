@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" a Python script that, using this https://jsonplaceholder.typicode.com/
-        REST API, for a given employee ID
-        returns information about his/her TODO list progress.
+"""
+A Python script that, using the https://jsonplaceholder.typicode.com/ REST API,
+returns information about a given employee ID's TODO list progress.
 """
 
 import requests
