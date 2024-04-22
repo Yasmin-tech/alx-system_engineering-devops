@@ -4,9 +4,6 @@ import requests
 import sys
 
 
-EMPLOYEE_ID = sys.argv[1]
-
-
 def employee_tasks_info(EMPLOYEE_ID):
     """request an employee data and task information from
 
@@ -50,4 +47,5 @@ def employee_tasks_info(EMPLOYEE_ID):
 
 
 if __name__ == "__main__":
+    EMPLOYEE_ID = sys.argv[1]
     employee_tasks_info(EMPLOYEE_ID)
