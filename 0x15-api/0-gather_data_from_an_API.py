@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-"""A Python script that, using https://jsonplaceholder.typicode.com/ REST API,
-
-returns information about a given employee ID's TODO list progress.
-"""
-
+"""Returns to-do list information for a given employee ID."""
 import requests
 import sys
 
@@ -13,7 +9,7 @@ EMPLOYEE_ID = sys.argv[1]
 
 def employee_tasks_info(EMPLOYEE_ID):
     """request an employee data and task information from
-    
+
     https://jsonplaceholder.typicode.com/
     REST API
     """
