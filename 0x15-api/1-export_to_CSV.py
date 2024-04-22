@@ -27,7 +27,7 @@ def employee_tasks_info(EMPLOYEE_ID):
             )
 
     employee = response1.json()
-    EMPLOYEE_NAME = employee.get("name")
+    EMPLOYEE_NAME = employee.get("username")
 
     response2_dict = response2.json()
     data = []  # this is the data that should be written to json file
