@@ -16,13 +16,11 @@ if __name__ == "__main__":
 
     list_tasks = []
     for task in todos:
-        task_title = task.get("title")
-        del (task["userId"])
-        del (task["title"])
-        del (task["id"])
-        task["task"] = task_title
-        task["username"] = user_name
-        list_tasks.append(task)
+        task_dict = {}
+        task_dict["task"] = task.get("title")
+        task_dict["completed"] = task.get("completed")
+        task_dict["username"] = user_name
+        list_tasks.append(task_dict)
 
     dict_ = {str(USER_ID): list_tasks}
 
