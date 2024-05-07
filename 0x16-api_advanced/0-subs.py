@@ -3,7 +3,6 @@
 
 
 import requests
-# import pprint
 
 
 def number_of_subscribers(subreddit):
@@ -11,7 +10,7 @@ def number_of_subscribers(subreddit):
         for a given subreddit. If an invalid subreddit is given,
         the function will return 0"""
 
-    headers = {"User-Agent": "My User Agent 1.0"}
+    headers = {"User-Agent": "Middle-Chipmunk-3601"}
     response = requests.get(
         "https://www.reddit.com/r/{}/about.json".format(subreddit),
         headers=headers,
@@ -22,6 +21,3 @@ def number_of_subscribers(subreddit):
         return result.get("subscribers")
     else:
         return 0
-
-
-# pprint.pprint(get_subreddit_subscribers("programming"))
