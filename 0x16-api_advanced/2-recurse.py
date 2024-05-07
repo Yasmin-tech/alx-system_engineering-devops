@@ -22,7 +22,8 @@ def recurse(subreddit, hot_list=[], after=""):
         # print(list_titles)
         hot_list.extend(list_titles)
         if result['data']['after']:
-            return recurse(subreddit, hot_list, after=result['data']['after'])
+            return recurse(subreddit, hot_list=hot_list,
+                           after=result['data']['after'])
         else:
             return hot_list
     else:
