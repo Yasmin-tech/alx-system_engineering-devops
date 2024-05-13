@@ -1,0 +1,28 @@
+# Serve the page from the route /airbnb-onepage/ in the flask app
+
+# The block to proxy requests to the process listening on port 5000 in the local host
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name localhost;
+
+    location /airbnb-onepage {
+        add_header X-Served-By '420214-web-01';
+	include proxy_params;
+	proxy_pass http://localhost:5000;
+    }
+}
+
+
+# The block to proxy requests to the process listening on port 5000 on its public IP
+server {
+    listen 80;
+    listen [::]:80;
+    server_name 54.160.73.119;
+
+    location /airbnb-onepage {
+        add_header X-Served-By '420214-web-01';
+	include proxy_params;
+	proxy_pass http://localhost:5000;
+    }
+}
