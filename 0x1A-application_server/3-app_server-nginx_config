@@ -9,15 +9,15 @@ server {
 
     location /airbnb-onepage {
         add_header X-Served-By '420214-web-01';
-	include proxy_params;
-	proxy_pass http://localhost:5000;
+	    include proxy_params;
+	    proxy_pass http://localhost:5000;
     }
 
-    location ~ /airbnb-dynamic/number_odd_or_even/[0-9]+ {
-	add_header X-Served-By '420214-web-01';
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+) {
+	    add_header X-Served-By '420214-web-01';
         include proxy_params;
-	rewrite ^/airbnb-dynamic/number_odd_or_even/(.*) /number_odd_or_even/$1 break;
- 	proxy_pass http://localhost:5001;
+	    rewrite ^/airbnb-dynamic/number_odd_or_even/(.*) /number_odd_or_even/$1 break;
+ 	    proxy_pass http://localhost:5001;
     }
 }
 
@@ -30,16 +30,16 @@ server {
 
     location /airbnb-onepage {
         add_header X-Served-By '420214-web-01';
-	include proxy_params;
-	proxy_pass http://localhost:5000;
+	    include proxy_params;
+	    proxy_pass http://localhost:5000;
     }
 
 
-    location ~ /airbnb-dynamic/number_odd_or_even/[0-9]+ {
-	add_header X-Served-By '420214-web-01';
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+	    add_header X-Served-By '420214-web-01';
         include proxy_params;
-	rewrite ^/airbnb-dynamic/number_odd_or_even/(.*) /number_odd_or_even/$1 break;
- 	proxy_pass http://localhost:5001;
+	    rewrite ^/airbnb-dynamic/number_odd_or_even/(.*) /number_odd_or_even/$1 break;
+ 	    proxy_pass http://localhost:5001;
     }
 
 }
