@@ -9,4 +9,5 @@
 # or configur ation, you wouldn’t need to manually stop and restart Gunicorn each time.
 # This can be particularly useful in a production environment where you want to minimize downtime
 
-ps auxf | grep gunicorn | awk '{print $2}' | xargs kill -HUP 
+# shellcheck disable=SC2009
+ps auxf | grep gunicorn | awk '{print $2}' | xargs kill -HUP
