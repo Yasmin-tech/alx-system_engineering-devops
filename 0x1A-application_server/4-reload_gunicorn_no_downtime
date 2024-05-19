@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Gracefully reloads Gunicorn.
+
+# Run this Bash script whenever you want to update your Gunicorn application server with new application code or configuration, and you want to do this with minimal downtim
+
+# When Gunicorn receives a HUP signal, it will gracefully restart all of its worker processes. This means that the old worker pro# cesses are allowed to finish handling their current requests before they are shut down, while new worker processes are started # up to replace them. This allows for the application code or configuration to be updated without dropping any active connections
+
+# So, if you’ve set up your system to send a HUP signal to Gunicorn whenever there are changes to your application code
+# or configur ation, you wouldn’t need to manually stop and restart Gunicorn each time.
+# This can be particularly useful in a production environment where you want to minimize downtime
+
+ps auxf | grep gunicorn | awk '{print $2}' | xargs kill -HUP 
