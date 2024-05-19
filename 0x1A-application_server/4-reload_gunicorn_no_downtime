@@ -10,4 +10,12 @@
 # This can be particularly useful in a production environment where you want to minimize downtime
 
 # shellcheck disable=SC2009
-ps auxf | grep gunicorn | awk '{print $2}' | xargs kill -HUP
+# ps auxf | grep gunicorn | awk '{print $2}' | xargs kill -HUP
+
+pids=$(ps aux | grep gunicorn | awk '{print $2}')
+
+for pid in $pids; do
+	if [ -n "$pid" ]; then
+		kill -HUP "$pid"
+	fi
+done
